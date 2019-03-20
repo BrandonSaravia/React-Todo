@@ -10,8 +10,6 @@ class App extends React.Component {
     this.state = {
       itemList: listItems,
       task: "",
-      id: Date.now(),
-      completed: false
     }
   }
 
@@ -19,7 +17,7 @@ class App extends React.Component {
 
     console.log("event: " , event.target)
     this.setState({
-      [event.target.task]: event.target.value
+      [event.target.name]: event.target.value
     });
   };
 
@@ -27,12 +25,13 @@ class App extends React.Component {
     event.preventDefault();
     const newItem = {
       task: this.state.task,
-      id: this.state.id,
-      completed: this.state.completed
+      id: Date.now(),
+      completed: false
     };
 
     this.setState({
-      itemList: [...this.state.itemList, newItem]
+      itemList: [...this.state.itemList, newItem],
+      task: ""
     });
   };
 
@@ -62,7 +61,7 @@ class App extends React.Component {
         </div>
        
         <TodoForm
-          task={this.state.input}
+          task={this.state.task}
           id={this.state.id}
           completed={this.state.completed}
           handleChanges={this.handleChanges}
