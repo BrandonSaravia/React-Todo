@@ -12,3 +12,18 @@
 // }
 
 // export default todoList
+import React from "react";
+
+import Item from "./Item";
+
+const Listitems = props => {
+  return (
+    <div className="">
+      {props.listItems.map(item => (
+        <Item key={item.completed} item={item} toggleItem={props.toggleCompleted} />
+      ))}
+    </div>
+  );
+};
+
+export default Listitems;

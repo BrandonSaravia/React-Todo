@@ -10,8 +10,27 @@ class App extends React.Component {
     this.state = {
       itemList: listItems,
       task: "",
+      id: Date.now(),
+      completed: false
     }
   }
+
+  toggleCompleted = id => {
+    this.setState({
+      groceries: this.state.groceries.map(item => {
+        if (item.id === id) {
+          return {
+            ...item,
+            completed: !item.completed
+          
+          };
+        }
+        return item;
+      })
+    });
+  }
+
+  const 
 
   handleChanges = event => {
 
@@ -35,18 +54,14 @@ class App extends React.Component {
     });
   };
 
-  // clearList = event => {
-  //   event.preventDefault();
-  //   const newItem = {
-  //     task: this.state.task,
-  //     id: this.state.id,
-  //     completed: none
-  //   };
+  clearList = event => {
+    event.preventDefault();
+    
 
-  //   this.setState({
-  //     itemList: [...this.state.itemList, newItem]
-  //   });
-  // };
+    this.setState({
+      
+    });
+  };
 
 
   render() {
